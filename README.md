@@ -28,7 +28,7 @@ This repository provides the source code and instructions for setting up and usi
 - Easily integrate the generator into your own projects.
 - Clean and user-friendly web interface.
 - Utilizes deep learning for accurate image analysis.
-- Customizable to suit your specific needs.
+- Image captions can be used in content moderation systems to analyze and filter out inappropriate or harmful content based on the generated captions.
 - If you have a load of images and you want to sort them according to some keywords, pass the images through the model and sort them without opening all the images.
 
 ## Getting Started
