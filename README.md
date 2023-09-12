@@ -10,9 +10,7 @@
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [How it Works](#how-it-works)
-- [Contributing](#contributing)
-- [License](#license)
+
 
 ## Introduction
 
@@ -49,3 +47,12 @@ Before you can use the Image Caption Generator, ensure you have the following pr
    cd image-caption-generator
 2. First run the image_caption notebook which will generate feature.pkl and main_model.h5 file
 3. Now simply run app.py
+
+## Usage
+- Run the Flask web application:
+python app.py
+- Open your web browser and navigate to http://localhost:5000.
+
+- Click on the "Upload Image" button to select an image for caption generation.
+
+- After uploading, click the "Generate Caption" button to see the generated caption for the image.
