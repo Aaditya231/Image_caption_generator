@@ -1,7 +1,9 @@
 # Image Caption Generator
+<div style="display: flex; justify-content: space-between;">
+    <img src="https://github.com/Aaditya231/Image_caption_generator/blob/main/images/Screenshot%202023-09-13%20005013.png" alt="Image 1" width="45%" />
+    <img src="https://github.com/Aaditya231/Image_caption_generator/blob/main/images/Screenshot%202023-09-13%20005110.png" alt="Image 2" width="45%" />
+</div>
 
-![alt text](https://github.com/Aaditya231/Image_caption_generator/blob/main/images/Screenshot%202023-09-13%20005013.png)
-![alt text](https://github.com/Aaditya231/Image_caption_generator/blob/main/images/Screenshot%202023-09-13%20005110.png)
 
 
 ## Table of Contents
