@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Caption Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+      }
+      #image-upload-form {
+        margin: 20px auto;
+        max-width: 300px;
+        border: 1px solid #ccc;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+      #image-upload-input {
+        display: none;
+      }
+      #image-upload-label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #333;
+      }
+      #upload-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+      #image-container {
+        margin: 20px auto;
+        max-width: 300px;
+        text-align: center;
+      }
+      #uploaded-image {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Image Caption Generator</h1>
+    <!-- Form for uploading an image -->
+    <form
+      id="image-upload-form"
+      enctype="multipart/form-data"
+      action="/generate"
+      method="POST"
+    >
+      <label for="image-upload-input" id="image-upload-label"
+        >Choose an Image:</label
+      >
+      <input
+        type="file"
+        id="image-upload-input"
+        name="image"
+        accept="image/*"
+      />
+      <button type="button" id="upload-button">Upload Image</button>
+      <button type="button" id="generate-button" onclick="generateCaption()">
+        Generate Caption
+      </button>
+    </form>
+
+    <!-- Display the uploaded image -->
+    <div id="image-container">
+      <h2>Uploaded Image</h2>
+      <img id="uploaded-image" src="" alt="Uploaded Image" />
+    </div>
+
+    <!-- Display the generated caption -->
+    <div id="caption-container">
+      <h2>Caption</h2>
+      <p id="generated-caption"></p>
+    </div>
+
+    <script>
+      function uploadImage() {
+        // Trigger the file input's click event programmatically
+        const inputElement = document.getElementById("image-upload-input");
+        inputElement.click();
+      }
+
+      function handleImageUpload() {
+        // This function is called when a file is selected
+        const inputElement = document.getElementById("image-upload-input");
+        const imageElement = document.getElementById("uploaded-image");
+
+        const file = inputElement.files[0];
+
+        if (file) {
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            imageElement.src = e.target.result;
+          };
+
+          reader.readAsDataURL(file);
+        }
+      }
+      function generateCaption() {
+        // Get the image file input element
+        const inputElement = document.getElementById("image-upload-input");
+        const file = inputElement.files[0];
+
+        if (!file) {
+          alert("Please select an image to generate a caption.");
+          return;
+        }
+
+        // Create a FormData object to send the image file
+        const formData = new FormData();
+        formData.append("image", file);
+
+        // Make an AJAX request to the Flask server to generate a caption
+        fetch("/generate", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              alert(data.error);
+            } else {
+              const generatedCaption = data.caption;
+              const captionElement =
+                document.getElementById("generated-caption");
+              captionElement.textContent = generatedCaption;
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+      const imageInputElement = document.getElementById("image-upload-input");
+      imageInputElement.addEventListener("change", handleImageUpload);
+    </script>
+  </body>
+</html>
