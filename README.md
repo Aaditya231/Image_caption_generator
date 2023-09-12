@@ -1,6 +1,8 @@
 # Image Caption Generator
 
-![Demo](demo.png)
+![alt text](https://github.com/Aaditya231/Image_caption_generator/blob/main/images/Screenshot%202023-09-13%20005013.png)
+![alt text](https://github.com/Aaditya231/Image_caption_generator/blob/main/images/Screenshot%202023-09-13%20005110.png)
+
 
 ## Table of Contents
 
